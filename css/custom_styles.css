@@ -1,0 +1,148 @@
+/*----------------------------------------------------
+@File: Custom Styles
+@Author: Miguel A. Rangel
+@URL: https://sopalifeplanner.com
+
+/*====================================================*/
+@font-face {
+  font-family: "GothamBlack";
+  src: url("../fonts/Gotham-Black.otf") format("otf"),
+       url("../fonts/Gotham-Black.ttf") format("truetype"),
+       url("../fonts/Gotham-Black.eot") format("eot"),
+       url("../fonts/Gotham-Black.svg") format("svg"),
+       url("../fonts/Gotham-Black.woff") format("woff");
+}
+
+@font-face {
+  font-family: "GothamMedium";
+  src: url("../fonts/Gotham-Medium.otf") format("otf"),
+       url("../fonts/Gotham-Medium.ttf") format("truetype"),
+       url("../fonts/Gotham-Medium.eot") format("eot"),
+       url("../fonts/Gotham-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "GothamBook";
+  src: url("../fonts/Gotham-Book.otf") format("otf"),
+       url("../fonts/Gotham-Book.ttf") format("truetype"),
+       url("../fonts/Gotham-Book.eot") format("eot"),
+       url("../fonts/Gotham-Book.svg") format("svg"),
+       url("../fonts/Gotham-Book.woff") format("woff");
+}
+
+body, p{
+  color: #333;
+}
+b, strong {
+  font-weight: 900;
+}
+
+.hidden{
+	display: none !important;
+}
+
+.header_area.navbar_fixed .menu_five .menu_toggle .hamburger-cross span, .header_area.navbar_fixed .menu_five .menu_toggle .hamburger span {
+    background: #2762b7;
+}
+
+.header_desc{
+  font: 400 16px/28px "GothamMedium", sans-serif;
+}
+
+.menu_custfive{
+	color: #2762b7;
+	border-color: #2762b7;
+}
+
+#sopa_history{
+	background: url(../img/backgrounds/sopa_history_background.png) no-repeat center center !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.menu_five .btn_get:hover {
+    color: #2762b7;
+}
+
+/* Sign Up Page */
+/* Header Menu button */
+.menu_four .btn_get{
+	color: #fff;
+}
+
+.header_area.navbar_fixed .menu_four .btn_get_radious {
+    border-color: #2762b7;
+    color: #2762b7;
+}
+
+.menu_four .btn_get_radious:hover{
+	background:#fff;
+  	color: #2762b7;;
+}
+
+
+/* Login form button */
+.login-form .btn_three, .sign-in-form .btn_three {
+	border-color: #2762b7; 
+	margin-top: 35px;
+  	background: #2762b7;
+  	color: #fff;
+}
+
+.login-form .btn_three:hover, .sign-in-form .btn_three:hover {
+  	background: #2762b7;
+  	color: #fff;
+}
+
+.login-form .extra .checkbox input[type="checkbox"]:before {
+    border: 1px solid #2762b7;
+}
+
+.login-form .extra .checkbox input[type="checkbox"]:checked:after {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 12px;
+    border: solid #2762b7;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0px;
+    left: 5px;
+}
+
+.login-form .extra .checkbox input[type="checkbox"]:before {
+  width: 15px;
+  height: 15px;
+}
+
+.tx_sopa_history p{
+  text-align: justify;
+}
+
+
+.has-error .form-control {
+    border-color: #d6716f !important;
+    -webkit-box-shadow: inset 0 6px 6px rgb(214 113 111 / 8%) !important;
+    box-shadow: inset 0 6px 6px rgb(214 113 111 / 8%) !important;
+}
+
+.has-error .form-control-feedback {
+    color: #d6716f !important;
+}
+
+.has-feedback label~.form-control-feedback {
+    top: 48px !important;
+}
+
+.has-error .help-block {
+    color: #d6716f !important;
+    font-size: 14px !important;
+    font-family: "GothamBook";
+}
+
+/* S.O.P.A. Life Planner */
