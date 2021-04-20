@@ -7,75 +7,58 @@ function registrarUsuario(){
 	//Envía al servidor la petición de registro de un nuevo usuario
 	var form = $("#frm_register");
 	var form_usr = form.serialize();
-    var loader_gif = "<img src='assets/images/ajax-loader.gif'>";
+    //var loader_gif = "<img src='assets/images/ajax-loader.gif'>";
 	
 	$.ajax({
         type:"POST",
         url:"db/data-user.php",
         data:{ form_nu: form_usr },
         beforeSend: function(){
-            $("#reg-resp").html( loader_gif );
+            //$("#reg-resp").html( loader_gif );
         },
         success: function( response ){
+            console.log(response);
             $("#reg-resp").html( "" );
             res = jQuery.parseJSON( response );
             
             if( res.exito == 1 ){
-
+        
             } else {
-
+                $("#reg-resp").addClass( "frm_error" );
+                $("#reg-resp").html( res.mje );
             } 
         }
     });
 }
 /* ----------------------------------------------------------------------------------- */
-function chequearEstadoCarrito(){
-    // Evalúa si existe un estado previo del carrito de compra y se carga en variable de sesión del carrito.
+function reestablecerPassword(){
+    //Envía al servidor la petición para reestablecer contraseña de usuario
 
-    /*if ( typeof $.cookie( "ckcart" ) === 'undefined' )
-        console.log( "No existen elementos de carrito guardado" );
-    else{ 
-        //Cookie registrada:
-        console.log( "Obteniendo carrito guardado..." );
-        
-    }*/
-    console.log( "Obteniendo carrito guardado..." );
-    cargarCarritoGuardadoSesion();
-}
-/* ----------------------------------------------------------------------------------- */
-function iniciarSesion( form, mode ){
-    //Envía al servidor la petición de inicio de sesión
-    //mode: full: Página de login. min: ventana emergente del menú navegación
-    var form_log = form.serialize();
+    var form_paswrecovery = $("#frm_resetpassword").serialize();
+    //var loader_gif = "<img src='assets/images/ajax-loader.gif'>";
     
     $.ajax({
         type:"POST",
-        url:"database/data-user.php",
-        data:{ usr_login: form_log },
+        url:"db/data-user.php",
+        data:{ new_passw: form_paswrecovery },
+        beforeSend: function(){
+            //$("#reg-resp").html( loader_gif );
+            $("#reg-resp").removeClass( "frm_success" ).removeClass( "frm_error" );
+        },
         success: function( response ){
             console.log( response );
+            $("#reg-resp").html("");
             res = jQuery.parseJSON( response );
             if( res.exito == 1 ){
-                /*chequearEstadoCarrito();*/
-                if( mode == "full" ){
-                    //Redirigir a pantalla de cuenta de usuario
-                    window.location.href = "categories.php"; 
-                }else{
-                    window.location.href = "categories.php";
-                }
-            }else{
-                if( mode == "full" ){
-                    mensajeAlerta( "#alert-msgs", res.mje );
-                    activarBoton( "#btn_login" );
-                }else{
-                    window.location.href = "login.php?err";   
-                }
-
-            }
+                $("#reg-resp").addClass( "frm_success" );
+                $("#reg-resp").html( res.mje );
+            } else {
+                $("#reg-resp").addClass( "frm_error" );
+                $("#reg-resp").html( res.mje );
+            }  
         }
     });
 }
-
 /* ----------------------------------------------------------------------------------- */
 
 function enviarDatosContacto( datos ){
@@ -106,7 +89,7 @@ jQuery.fn.exists = function(){ return ($(this).length > 0); }
 
 $( document ).ready(function() {	
     
-	$( ".select_pdetail" ).first().click();
+	
 
     $("#btn_login_dd").on( "click", function(){
         iniciarSesion( $("#frm_login_bar"), "min" );
@@ -205,10 +188,10 @@ $( document ).ready(function() {
     	  }
     	});
     }
-    /* ......................................................................*/
-    if ( $('#frm_login').exists() ) {
+
+    if ( $('#frm_resetpassword').exists() ) {
         
-        $('#frm_login').bootstrapValidator({
+        $('#frm_resetpassword').bootstrapValidator({
             
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -216,31 +199,32 @@ $( document ).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Debe indicar un email'
-                        },
-                        emailAddress: {
-                            message: 'Debe indicar un email válido'
-                        }
-                    }
-                },
                 password: {
                     validators: {
                         notEmpty: {
                             message: 'Debe indicar contraseña'
                         }
                     }
+                },
+                cnf_password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Debe indicar contraseña'
+                        },
+                        identical: {
+                            field: 'password',
+                            message: 'Las contraseñas deben coincidir'
+                        },
+                    }
                 }
             }
         });
 
-        $('#frm_login').bootstrapValidator().on('submit', function (e) {
+        $('#frm_resetpassword').bootstrapValidator().on('submit', function (e) {
           if (e.isDefaultPrevented()) {
-            
+           
           } else {
-            iniciarSesion( $("#frm_login"), "full" );
+            reestablecerPassword();
             return false;
           }
         });
