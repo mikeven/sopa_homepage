@@ -66,6 +66,25 @@ b, strong {
 	border-color: #2762b7;
 }
 
+#frm_contact .text_box {
+    margin-bottom: 5px;
+}
+
+#frm_contact .text_box textarea {
+    height: 100px;
+}
+
+#frm_contact .text_box input[type="text"], .text_box input[type="password"], .text_box input[type="email"] {
+    height: 45px;
+}
+
+#frm_contact .text_box input[type="text"], .text_box textarea, .text_box input[type="password"], .text_box input[type="email"] {padding-left: 10px;
+    line-height: 1.5em;
+    padding-left: 10px;
+}
+
+#mision_vision{ padding: 80px; }
+
 #sopa_history{
 	background: url(../img/backgrounds/sopa_history_background.png) no-repeat center center !important;
   -webkit-background-size: cover;
@@ -80,7 +99,7 @@ b, strong {
 
 /* Sign Up Page */
 /* Header Menu button */
-.menu_four .btn_get{
+.menu_four .btn_get, .txtitle{
 	color: #fff;
 }
 
