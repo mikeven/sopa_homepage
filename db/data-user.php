@@ -228,11 +228,11 @@
 			
 			if( $idu > 0 ){
 				
-				//$remail = enviarMensajeEmail( "usuario_nuevo", $usuario, $usuario["email"] );
+				$remail["exito"] = 1;//enviarMensajeEmail( "usuario_nuevo", $usuario, $usuario["email"] );
 
 				if( $remail["exito"] == 1 ){
 					$res["exito"] 	= 1;
-					$res["url"] 	= "registered_account.php?user_t=$usuario[token]";
+					$res["mje"] 	= "Usuario registrado con éxito";
 				}
 				else{
 					$res["exito"] 	= -1;

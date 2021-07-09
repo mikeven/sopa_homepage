@@ -22,7 +22,8 @@ function registrarUsuario(){
             res = jQuery.parseJSON( response );
             
             if( res.exito == 1 ){
-        
+                $("#reg-resp").addClass( "frm_success" );
+                $("#reg-resp").html( res.mje );
             } else {
                 $("#reg-resp").addClass( "frm_error" );
                 $("#reg-resp").html( res.mje );
